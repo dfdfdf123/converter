@@ -1,7 +1,15 @@
-const sum = (a, b) => a + b;
+import React from 'react';
+import { configure, shallow } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+import App from '../src/components/App';
 
-describe('Testing the tests setup', () => {
-    it('Sum 1 + 1 equals 2', () => {
-        expect(sum(1, 1)).toBe(2);
+configure({ adapter: new Adapter() });
+
+describe('App', () => {
+    let wrapper;
+    beforeEach(() => wrapper = shallow(<App />));
+
+    it('should render a <div />', () => {
+        expect(wrapper.find('div').length).toEqual(1);
     });
 });
